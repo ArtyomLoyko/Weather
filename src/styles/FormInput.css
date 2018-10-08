@@ -1,0 +1,28 @@
+.form-input {
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin-left: 5px;
+    text-indent: 2px;
+    user-select: none;
+}
+
+.form-input:hover {
+    background-color: rgba(240, 240, 240, 0.8);
+}
+
+.form-input::-webkit-input-placeholder {
+    font-size: 0.85rem;
+    font-style: italic;
+    padding-left: 3px; 
+}
+
+.form-input:focus::-webkit-input-placeholder {
+    color: transparent; 
+}
+
+.form-radio {
+    margin-right: 5px;
+    margin-top: 2px;
+}
