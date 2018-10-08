@@ -3,9 +3,10 @@
 This application will allow you to get the weather forecast for today, tomorrow and the day after tomorrow and find your city on the map.
 
 ## Screenshots
-![alt-текст](https://github.com/ArtyomLoyko/Weather-Test-Task/tree/master/src/assets/screen1)
-![alt-текст](https://github.com/ArtyomLoyko/Weather-Test-Task/tree/master/src/assets/screen2)
-![alt-текст](https://github.com/ArtyomLoyko/Weather-Test-Task/tree/master/src/assets/screen3)
+
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen1.JPG)
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen2.JPG)
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen3.JPG)
 
 ## Technology and Utilty: 
 * Create-React-App(for convenient work on the project)
