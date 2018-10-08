@@ -4,9 +4,9 @@ This application will allow you to get the weather forecast for today, tomorrow 
 
 ## Screenshots
 
-![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen1.JPG)
-![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen2.JPG)
-![](https://github.com/ArtyomLoyko/Weather-Test-Task/master/src/assets/screen3.JPG)
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/blob/master/src/assets/screen1.JPG)
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/blob/master/src/assets/screen2.JPG)
+![](https://github.com/ArtyomLoyko/Weather-Test-Task/blob/master/src/assets/screen3.JPG)
 
 ## Technology and Utilty: 
 * Create-React-App(for convenient work on the project)
