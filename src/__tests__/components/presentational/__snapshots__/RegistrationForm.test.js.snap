@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm renders properly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Unknown
+    handleSubmit={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <label>
+          Name:
+          <Field
+                    component="input"
+                    name="username"
+                    placeholder="your name"
+                    required={true}
+                    type="text"
+          />
+</label>,
+        <label>
+          Email:
+          <Field
+                    component="input"
+                    name="email"
+                    placeholder="your email"
+                    required={true}
+                    type="email"
+          />
+</label>,
+        <button
+          className="start-game-btn"
+          type="submit"
+>
+          Start game!
+</button>,
+      ],
+      "className": "user-setting-form",
+      "onSubmit": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Name:",
+            <Field
+              component="input"
+              name="username"
+              placeholder="your name"
+              required={true}
+              type="text"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Name:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": "input",
+              "name": "username",
+              "placeholder": "your name",
+              "required": true,
+              "type": "text",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "label",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Email:",
+            <Field
+              component="input"
+              name="email"
+              placeholder="your email"
+              required={true}
+              type="email"
+/>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Email:",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "component": "input",
+              "name": "email",
+              "placeholder": "your email",
+              "required": true,
+              "type": "email",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "label",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Start game!",
+          "className": "start-game-btn",
+          "type": "submit",
+        },
+        "ref": null,
+        "rendered": "Start game!",
+        "type": "button",
+      },
+    ],
+    "type": "form",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <label>
+            Name:
+            <Field
+                        component="input"
+                        name="username"
+                        placeholder="your name"
+                        required={true}
+                        type="text"
+            />
+</label>,
+          <label>
+            Email:
+            <Field
+                        component="input"
+                        name="email"
+                        placeholder="your email"
+                        required={true}
+                        type="email"
+            />
+</label>,
+          <button
+            className="start-game-btn"
+            type="submit"
+>
+            Start game!
+</button>,
+        ],
+        "className": "user-setting-form",
+        "onSubmit": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Name:",
+              <Field
+                component="input"
+                name="username"
+                placeholder="your name"
+                required={true}
+                type="text"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Name:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": "input",
+                "name": "username",
+                "placeholder": "your name",
+                "required": true,
+                "type": "text",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "label",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Email:",
+              <Field
+                component="input"
+                name="email"
+                placeholder="your email"
+                required={true}
+                type="email"
+/>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Email:",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": "input",
+                "name": "email",
+                "placeholder": "your email",
+                "required": true,
+                "type": "email",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "label",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Start game!",
+            "className": "start-game-btn",
+            "type": "submit",
+          },
+          "ref": null,
+          "rendered": "Start game!",
+          "type": "button",
+        },
+      ],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

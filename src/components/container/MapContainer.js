@@ -38,7 +38,7 @@ MapContainer.propTypes = {
 
 export default connect(
     state => ({
-        viewport: state.map.viewport.toJS(),
+        viewport: state.map.viewport /*.toJS()*/,
     }),
     { onChangeViewport }
 )(MapContainer);

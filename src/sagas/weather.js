@@ -2,22 +2,21 @@ import { call, put, select } from 'redux-saga/effects';
 import axios from 'axios';
 import moment from 'moment';
 
-import { getCity, getDay } from '../selectors';
-
+import { getCity, getCityError, getDay } from '../selectors';
+import { MAPBOX_TOKEN, OPEN_WEATHER_TOKEN } from '../constants';
 import {
-    MAPBOX_TOKEN,
-    OPEN_WEATHER_TOKEN,
-    RESET_COORD_ERROR,
-    FETCH_COORD_REQUEST,
-    FETCH_COORD_ERROR,
-    CHANGE_COORD_MAP,
-    SET_COORD_POPUP,
-    FETCH_WEATHER_REQUEST,
-    FETCH_WEATHER_SUCCESS,
-    FETCH_WEATHER_ERROR,
-    SHOW_POPUP,
-    CLOSE_POPUP,
-} from '../constants';
+    resetCoordError,
+    fetchCoordRequest,
+    fetchCoordError,
+    changeCoordMap,
+    setCoordPopup,
+    resetWeatherError,
+    fetchWeatherRequest,
+    fetchWeatherSuccess,
+    fetchWeatherError,
+    showPopup,
+    closePopup,
+} from '../actions';
 
 const createDayPeriods = day => {
     const currentDate = new Date();
@@ -67,42 +66,33 @@ const getForecastDay = (day, forecast) => {
     }
 };
 
-export function* resetCoordError() {
-    yield put({
-        type: CLOSE_POPUP,
-    });
-
-    yield put({
-        type: RESET_COORD_ERROR,
-    });
+export function* resetStateErrors() {
+    yield put(closePopup());
+    yield put(resetCoordError());
+    yield put(resetWeatherError());
 }
 
-export function* fetchCoord() {
-    const city = yield select(getCity);
+export function* fetchCoord(action) {
+    // const city = yield select(getCity);
+    const city = action.payload;
     try {
-        yield put({
-            type: FETCH_COORD_REQUEST,
-        });
-
+        yield put(fetchCoordRequest());
+        console.log(city);
         const response = yield call(
             axios.get,
             `https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=${MAPBOX_TOKEN}`
         );
 
-        yield put({
-            type: CHANGE_COORD_MAP,
-            payload: response.data.features[0].bbox,
-        });
+        console.log(response);
 
-        yield put({
-            type: SET_COORD_POPUP,
-            payload: response.data.features[0].center,
-        });
+        // if (response.data.features[0].bbox) {
+        //     yield put(changeCoordMap(response.data.features[0].bbox));
+        //     yield put(setCoordPopup(response.data.features[0].center));
+        // } else {
+        //     yield put(fetchCoordError());
+        // }
     } catch (error) {
-        yield put({
-            type: FETCH_COORD_ERROR,
-            payload: error,
-        });
+        yield put(fetchCoordError(error));
     }
 }
 
@@ -110,9 +100,7 @@ export function* fetchWeather() {
     const city = yield select(getCity);
     const day = yield select(getDay);
     try {
-        yield put({
-            type: FETCH_WEATHER_REQUEST,
-        });
+        yield put(fetchWeatherRequest());
 
         const response = yield call(
             axios.get,
@@ -121,27 +109,22 @@ export function* fetchWeather() {
 
         const forecastDay = getForecastDay(day, response);
 
-        yield put({
-            type: FETCH_WEATHER_SUCCESS,
-            payload: {
+        yield put(
+            fetchWeatherSuccess({
                 city: city.toUpperCase(),
                 weather: forecastDay,
-            },
-        });
-
-        yield put({
-            type: SHOW_POPUP,
-        });
+            })
+        );
+        yield put(showPopup());
     } catch (error) {
-        yield put({
-            type: FETCH_WEATHER_ERROR,
-            payload: error,
-        });
+        yield put(fetchWeatherError(error));
+        yield put(showPopup());
     }
 }
 
-export function* getForecast() {
-    yield resetCoordError();
-    yield fetchCoord();
-    yield fetchWeather();
+export function* getForecast(action) {
+    // yield resetStateErrors();
+    // yield fetchCoord(action);
+    // const isError = yield select(getCityError);
+    // !isError && (yield fetchWeather());
 }

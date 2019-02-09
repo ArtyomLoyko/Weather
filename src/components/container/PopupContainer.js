@@ -9,7 +9,8 @@ import Weather from '../presentational/Weather';
 
 class PopupContainer extends Component {
     render() {
-        const { popup, city, weather, closePopup } = this.props;
+        const { popup, city, weather, isError, closePopup } = this.props;
+
         return !popup.isOpen ? null : (
             <Popup
                 latitude={popup.coord[1]}
@@ -21,7 +22,11 @@ class PopupContainer extends Component {
                 offsetLeft={15}
                 offsetTop={15}
             >
-                <Weather city={city} weather={weather} />
+                {isError ? (
+                    <p>Sorry, there is no weather forecast for your city...</p>
+                ) : (
+                    <Weather city={city} weather={weather} />
+                )}
             </Popup>
         );
     }
@@ -39,6 +44,7 @@ export default connect(
         popup: state.popup,
         city: state.weather.city,
         weather: state.weather.data,
+        isError: state.weather.isError,
     }),
     { closePopup }
 )(PopupContainer);

@@ -1,4 +1,5 @@
-import { SET_COORD_POPUP, SHOW_POPUP, CLOSE_POPUP } from '../constants';
+import { createReducer } from 'redux-act';
+import { setCoordPopup, showPopup, closePopup } from '../actions';
 
 const initialState = {
     isOpen: false,
@@ -6,28 +7,22 @@ const initialState = {
     coord: null,
 };
 
-const popup = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_COORD_POPUP:
-            return {
-                ...state,
-                coord: action.payload,
-            };
-        case SHOW_POPUP:
-            return {
-                ...state,
-                isOpen: true,
-                isClose: false,
-            };
-        case CLOSE_POPUP:
-            return {
-                ...state,
-                isOpen: false,
-                isClose: true,
-            };
-        default:
-            return state;
-    }
-};
-
-export default popup;
+export default createReducer(
+    {
+        [setCoordPopup]: (state, coord) => ({
+            ...state,
+            coord: coord,
+        }),
+        [showPopup]: state => ({
+            ...state,
+            isOpen: true,
+            isClose: false,
+        }),
+        [closePopup]: state => ({
+            ...state,
+            isOpen: false,
+            isClose: true,
+        }),
+    },
+    initialState
+);

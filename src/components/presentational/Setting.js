@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
+import CityListContainer from './../container/CityListContainer';
+
 import './../../styles/FormInput.css';
 
 const Wrapper = styled.form`
@@ -68,73 +70,85 @@ const SubmitButton = styled.button`
     }
 `;
 
-export const Setting = ({ handleSubmit }) => {
-    return (
-        <Wrapper onSubmit={handleSubmit}>
-            <Text>WEATHER FORECAST</Text>
-            <FieldContainer>
-                <label>
-                    Insert City:
-                    <Field
-                        name="city"
-                        component="input"
-                        className="form-input"
-                        type="text"
-                        placeholder="city *"
-                        required
-                    />
-                </label>
-            </FieldContainer>
-            <FieldContainer>
-                <SelectContainer>
-                    <span>Select Day:</span>
-                    <RadioLabelsContainer>
-                        <RadioLabel>
-                            <Field
-                                name="day"
-                                component="input"
-                                className="form-radio"
-                                type="radio"
-                                value="today"
-                                required
-                            />
-                            Today
-                        </RadioLabel>
-                        <RadioLabel>
-                            <Field
-                                name="day"
-                                component="input"
-                                className="form-radio"
-                                type="radio"
-                                value="tomorrow"
-                                required
-                            />
-                            Tomorrow
-                        </RadioLabel>
-                        <RadioLabel>
-                            <Field
-                                name="day"
-                                component="input"
-                                className="form-radio"
-                                type="radio"
-                                value="day after tomorrow"
-                                required
-                            />
-                            Day after tomorrow
-                        </RadioLabel>
-                    </RadioLabelsContainer>
-                </SelectContainer>
-            </FieldContainer>
-            <SubmitButton type="submit">Show Weather</SubmitButton>
-        </Wrapper>
-    );
-};
+const InputContainer = styled.div`
+    width: 200px;
+    display: inline-flex;
+    position: relative;
+`;
 
-Setting.propTypes = {
+class SettingContainer extends React.Component {
+    render() {
+        const { handleSubmit, handleChangeInput } = this.props;
+        return (
+            <Wrapper onSubmit={handleSubmit}>
+                <Text>WEATHER FORECAST</Text>
+                <FieldContainer>
+                    <label>
+                        Insert City:
+                        <InputContainer>
+                            <Field
+                                handleChangeInput={handleChangeInput}
+                                name="city"
+                                component={CityListContainer}
+                                type="text"
+                                placeholder="city *"
+                                autocomplete="off"
+                                required
+                            />
+                        </InputContainer>
+                    </label>
+                </FieldContainer>
+                <FieldContainer>
+                    <SelectContainer>
+                        <span>Select Day:</span>
+                        <RadioLabelsContainer>
+                            <RadioLabel>
+                                <Field
+                                    name="day"
+                                    component="input"
+                                    className="form-radio"
+                                    type="radio"
+                                    value="today"
+                                    required
+                                />
+                                Today
+                            </RadioLabel>
+                            <RadioLabel>
+                                <Field
+                                    name="day"
+                                    component="input"
+                                    className="form-radio"
+                                    type="radio"
+                                    value="tomorrow"
+                                    required
+                                />
+                                Tomorrow
+                            </RadioLabel>
+                            <RadioLabel>
+                                <Field
+                                    name="day"
+                                    component="input"
+                                    className="form-radio"
+                                    type="radio"
+                                    value="day after tomorrow"
+                                    required
+                                />
+                                Day after tomorrow
+                            </RadioLabel>
+                        </RadioLabelsContainer>
+                    </SelectContainer>
+                </FieldContainer>
+                <SubmitButton type="submit">Show Weather</SubmitButton>
+            </Wrapper>
+        );
+    }
+}
+
+SettingContainer.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
     form: 'setting',
     destroyOnUnmount: false,
-})(Setting);
+})(SettingContainer);

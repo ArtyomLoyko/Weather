@@ -1,4 +1,9 @@
-import { FETCH_WEATHER_SUCCESS, FETCH_WEATHER_ERROR } from '../constants';
+import { createReducer } from 'redux-act';
+import {
+    resetWeatherError,
+    fetchWeatherSuccess,
+    fetchWeatherError,
+} from '../actions';
 
 const initialState = {
     city: null,
@@ -7,23 +12,23 @@ const initialState = {
     error: null,
 };
 
-const weather = (state = initialState, action) => {
-    switch (action.type) {
-        case FETCH_WEATHER_SUCCESS:
-            return {
-                ...state,
-                city: action.payload.city,
-                data: action.payload.weather,
-            };
-        case FETCH_WEATHER_ERROR:
-            return {
-                ...state,
-                isError: true,
-                error: action.payload,
-            };
-        default:
-            return state;
-    }
-};
-
-export default weather;
+export default createReducer(
+    {
+        [resetWeatherError]: state => ({
+            ...state,
+            isError: false,
+            error: null,
+        }),
+        [fetchWeatherSuccess]: (state, weatherInfo) => ({
+            ...state,
+            city: weatherInfo.city,
+            data: weatherInfo.weather,
+        }),
+        [fetchWeatherError]: (state, error) => ({
+            ...state,
+            isError: true,
+            error: error,
+        }),
+    },
+    initialState
+);
