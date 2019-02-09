@@ -5,7 +5,7 @@
   "homepage": "https://artyomloyko.github.io/Weather",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --tab-width 4 --trailing-comma es5 --write",
+      "prettier --single-quote --tab-width 2 --trailing-comma es5 --write",
       "git add"
     ]
   },
