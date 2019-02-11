@@ -6,8 +6,8 @@ import { getForecast } from './weather';
 import { fetchCoord } from './map';
 
 export default function* rootSaga() {
-    yield all([
-        takeLatest(a.getForecast, getForecast),
-        takeLatest(a.fetchCoord, fetchCoord),
-    ]);
+  yield all([
+    takeLatest(a.getForecast, getForecast),
+    takeLatest(a.fetchCoord, fetchCoord),
+  ]);
 }
