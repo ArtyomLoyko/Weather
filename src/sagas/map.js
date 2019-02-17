@@ -1,13 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { MAPBOX_TOKEN } from './../constants';
-import {
-  fetchCoordRequest,
-  resetCoordError,
-  CHANGE_COORD_MAP,
-  SET_COORD_POPUP,
-  setCitiesData,
-} from '../actions';
+import { fetchCoordRequest, setCitiesData, fetchCoordError } from '../actions';
 
 export function* fetchCoord(action) {
   const city = action.payload;
@@ -23,6 +17,6 @@ export function* fetchCoord(action) {
 
     yield put(setCitiesData(options));
   } catch (error) {
-    yield put(resetCoordError());
+    yield put(fetchCoordError());
   }
 }

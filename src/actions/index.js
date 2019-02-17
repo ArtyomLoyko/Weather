@@ -20,3 +20,5 @@ export const fetchWeatherError = createAction();
 export const setCitiesData = createAction();
 
 export const toggleDropdown = createAction();
+
+export const onChangeViewport = createAction();

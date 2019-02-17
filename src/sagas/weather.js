@@ -2,29 +2,24 @@ import { call, put, select } from 'redux-saga/effects';
 import axios from 'axios';
 import moment from 'moment';
 import { getCity, getCitiesData, getDay } from '../selectors';
-import { MAPBOX_TOKEN, OPEN_WEATHER_TOKEN } from '../constants';
+import { OPEN_WEATHER_TOKEN, DATE_FORMAT } from '../constants';
 import {
-  resetCoordError,
-  fetchCoordRequest,
-  fetchCoordError,
   changeCoordMap,
   setCoordPopup,
-  resetWeatherError,
   fetchWeatherRequest,
   fetchWeatherSuccess,
   fetchWeatherError,
   showPopup,
-  closePopup,
 } from '../actions';
 
 const createDayPeriods = day => {
-  const currentDate = new Date();
-  const yymmdd = `${currentDate.getFullYear()}-${currentDate.getMonth() +
-    1}-${currentDate.getDate() + day}`;
-  const night = moment(`${yymmdd} 03:00:00`).format('YYYY-MM-DD HH:mm:ss');
-  const morning = moment(`${yymmdd} 09:00:00`).format('YYYY-MM-DD HH:mm:ss');
-  const afternoon = moment(`${yymmdd} 15:00:00`).format('YYYY-MM-DD HH:mm:ss');
-  const evening = moment(`${yymmdd} 21:00:00`).format('YYYY-MM-DD HH:mm:ss');
+  const date = new Date();
+  const yymmdd = `${date.getFullYear()}-${date.getMonth() +
+    1}-${date.getDate() + day}`;
+  const night = moment(`${yymmdd} 03:00:00`).format(DATE_FORMAT);
+  const morning = moment(`${yymmdd} 09:00:00`).format(DATE_FORMAT);
+  const afternoon = moment(`${yymmdd} 15:00:00`).format(DATE_FORMAT);
+  const evening = moment(`${yymmdd} 21:00:00`).format(DATE_FORMAT);
   return [night, morning, afternoon, evening];
 };
 
@@ -63,12 +58,6 @@ const getForecastDay = (day, forecast) => {
   }
 };
 
-// export function* resetStateErrors() {
-//     yield put(closePopup())
-//     yield put(resetCoordError())
-//     yield put(resetWeatherError())
-// }
-
 export function* fetchWeather(city) {
   const day = yield select(getDay);
   try {
@@ -106,10 +95,3 @@ export function* getForecast() {
     yield fetchWeather(selectedCity.place_name);
   }
 }
-
-// export function* getForecast(action) {
-//     // yield resetStateErrors();
-//     // yield fetchCoord(action);
-//     // const isError = yield select(getCityError);
-//     // !isError && (yield fetchWeather());
-// }
