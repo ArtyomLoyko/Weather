@@ -1,8 +1,7 @@
 {
   "name": "weather",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://artyomloyko.github.io/Weather",
+  "homepage": "https://github.com/ArtyomLoyko/weather.github.io",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --single-quote --tab-width 2 --trailing-comma es5 --write",
