@@ -7,7 +7,7 @@ import CityListItem from '../presentational/CityListItem';
 
 const Container = styled.ul`
   position: absolute;
-  top: 20px;
+  top: 5px;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -31,8 +31,8 @@ class CityListContainer extends Component {
         {citiesData.map(city => (
           <CityListItem
             key={city.id}
-            data={city.place_name}
-            onClick={() => handleItemClick(city.place_name)}
+            data={city.text}
+            onClick={() => handleItemClick(city.text)}
           />
         ))}
       </Container>

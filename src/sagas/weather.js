@@ -10,6 +10,8 @@ import {
   fetchWeatherSuccess,
   fetchWeatherError,
   showPopup,
+  toggleWarning,
+  closePopup,
 } from '../actions';
 
 const createDayPeriods = day => {
@@ -86,12 +88,14 @@ export function* fetchWeather(city) {
 export function* getForecast() {
   const inputValue = yield select(getCity);
   const citiesData = yield select(getCitiesData);
-
-  const selectedCity = citiesData.find(city => city.place_name === inputValue);
+  const selectedCity = citiesData.find(city => city.text === inputValue);
 
   if (selectedCity) {
     yield put(changeCoordMap(selectedCity.bbox));
     yield put(setCoordPopup(selectedCity.center));
-    yield fetchWeather(selectedCity.place_name);
+    yield fetchWeather(selectedCity.text);
+  } else {
+    yield put(toggleWarning());
+    yield put(closePopup());
   }
 }

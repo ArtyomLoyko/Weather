@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { change } from 'redux-form';
 import { connect } from 'react-redux';
 import { toggleDropdown } from './../../actions';
-import { getCity } from './../../selectors';
 
 import DropdownContainer from './DropdownContainer';
 
@@ -51,15 +50,15 @@ class CityListContainer extends Component {
       toggleDropdown,
       citiesData,
       input: { onChange },
-      // cityValue
     } = this.props;
 
     return (
       <InputContainer>
         <Input
-          // value={cityValue}
+          maxlength="30"
           onChange={onChange}
           innerRef={el => (this.input = el)}
+          required
         />
         {citiesData.length > 0 &&
           dropdownIsOpen && (
@@ -82,7 +81,6 @@ export default connect(
   state => ({
     citiesData: state.map.citiesData,
     dropdownIsOpen: state.map.dropdownIsOpen,
-    // cityValue: getCity(state)
   }),
   { toggleDropdown, change }
 )(CityListContainer);

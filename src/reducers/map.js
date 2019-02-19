@@ -7,6 +7,7 @@ import {
   setCitiesData,
   toggleDropdown,
   onChangeViewport,
+  toggleWarning,
 } from '../actions';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
     zoom: 1,
   },
   dropdownIsOpen: undefined,
+  warningIsOpen: undefined,
 };
 
 export default createReducer(
@@ -51,6 +53,10 @@ export default createReducer(
     [toggleDropdown]: (state, isOpen) => ({
       ...state,
       dropdownIsOpen: isOpen,
+    }),
+    [toggleWarning]: state => ({
+      ...state,
+      warningIsOpen: !state.warningIsOpen,
     }),
   },
   initialState

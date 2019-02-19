@@ -22,3 +22,5 @@ export const setCitiesData = createAction();
 export const toggleDropdown = createAction();
 
 export const onChangeViewport = createAction();
+
+export const toggleWarning = createAction();
