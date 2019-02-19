@@ -20,6 +20,6 @@ This application will allow you to get the weather forecast for today, tomorrow 
 * Axios(for requests to api)
 * Eslint&Prettier(for formating code)
 
-### Link
+## Link
 
 https://artyomloyko.github.io/weather/
