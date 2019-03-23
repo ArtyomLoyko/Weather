@@ -1,5 +1,6 @@
 import { createReducer } from 'redux-act';
 import WebMercatorViewport from 'viewport-mercator-project';
+import { FlyToInterpolator } from 'react-map-gl';
 import {
   fetchCoordError,
   resetCoordError,
@@ -9,6 +10,9 @@ import {
   onChangeViewport,
   toggleWarning,
 } from '../actions';
+
+const fitBounds = (bounds, viewport) =>
+  new WebMercatorViewport(viewport).fitBounds(bounds);
 
 const initialState = {
   citiesData: [],
@@ -39,13 +43,23 @@ export default createReducer(
       ...state,
       viewport: newViewport,
     }),
-    [changeCoordMap]: (state, coords) => ({
-      ...state,
-      viewport: new WebMercatorViewport(state.viewport).fitBounds([
-        [coords[0], coords[1]],
-        [coords[2], coords[3]],
-      ]),
-    }),
+    [changeCoordMap]: (state, coords) => {
+      const { viewport } = state;
+      const bounds = [[coords[0], coords[1]], [coords[2], coords[3]]];
+      const { latitude, longitude, zoom } = fitBounds(bounds, viewport);
+
+      return {
+        ...state,
+        viewport: {
+          ...state.viewport,
+          latitude: latitude,
+          longitude: longitude,
+          zoom: zoom,
+          transitionInterpolator: new FlyToInterpolator(),
+          transitionDuration: 2000,
+        },
+      };
+    },
     [setCitiesData]: (state, options) => ({
       ...state,
       citiesData: options,
